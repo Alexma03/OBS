@@ -1,0 +1,51 @@
+---
+import SceneLayout from "../../layouts/SceneLayout.astro";
+import "../../styles/base.css";
+import "../../styles/scenes.css";
+---
+
+<SceneLayout title="OBS · Móvil" bodyClass="scene-overlay scene-overlay--dark scene-overlay--mobile">
+  <div class="scene">
+    <div class="mobile-chrome">
+      <div class="clock" aria-live="polite">
+        <span class="clock__time" data-clock>00:00:00</span>
+      </div>
+
+      <div class="mobile-col mobile-col--phone">
+        <div class="phone-slot" data-phone-slot>
+          <div class="phone-slot__label">
+            Móvil · scrcpy
+            <span>Window Capture · 500×1080</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-col mobile-col--cam">
+        <div class="cam-frame mobile-cam" data-cam-frame>
+          <span class="cam-frame__corner cam-frame__corner--tl"></span>
+          <span class="cam-frame__corner cam-frame__corner--tr"></span>
+          <span class="cam-frame__corner cam-frame__corner--bl"></span>
+          <span class="cam-frame__corner cam-frame__corner--br"></span>
+          <div class="guide-note">Webcam · 720×1080</div>
+        </div>
+      </div>
+
+      <div class="mobile-col mobile-col--chat">
+        <div class="chat-slot mobile-chat" data-chat-slot>
+          <div class="chat-slot__label">
+            Chat
+            <span>Browser Source · 700×1080</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SceneLayout>
+
+<script>
+  import { initConfig } from "../../scripts/config";
+  import { initClock } from "../../scripts/clock";
+
+  initConfig();
+  initClock();
+</script>

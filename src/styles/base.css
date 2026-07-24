@@ -20,6 +20,22 @@
   --live-gap: 0px;
   --live-stack-gap: 0px;
   --live-cam-h: 315px;
+
+  /* Escena móvil: 3 columnas — scrcpy | cam | chat */
+  --mobile-phone-w: 500px;
+  --mobile-cam-w: 720px;
+  --mobile-chat-w: calc(var(--scene-w) - var(--mobile-phone-w) - var(--mobile-cam-w));
+
+  /* Combinada: scrcpy estrecho | Mac (1800×1169) arriba-dcha | cam+chat debajo */
+  --combo-phone-w: 480px;
+  --combo-right-w: calc(var(--scene-w) - var(--combo-phone-w)); /* 1440 */
+  --combo-bottom-h: 280px;
+  --combo-top-h: calc(var(--scene-h) - var(--combo-bottom-h)); /* 800 */
+  /* Mac fit en la zona superior derecha (por altura, sin crop) */
+  --combo-laptop-h: var(--combo-top-h);
+  --combo-laptop-w: calc(var(--combo-laptop-h) * 1800 / 1169); /* ~1047 */
+  --combo-cam-w: calc(var(--combo-right-w) / 2);
+  --combo-chat-w: calc(var(--combo-right-w) / 2);
 }
 
 *,

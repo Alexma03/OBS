@@ -1,0 +1,59 @@
+---
+import SceneLayout from "../../layouts/SceneLayout.astro";
+import "../../styles/base.css";
+import "../../styles/scenes.css";
+---
+
+<SceneLayout title="OBS · Móvil + Mac" bodyClass="scene-overlay scene-overlay--dark scene-overlay--combo">
+  <div class="scene">
+    <div class="combo-chrome">
+      <div class="clock" aria-live="polite">
+        <span class="clock__time" data-clock>00:00:00</span>
+      </div>
+
+      <!-- Izquierda: scrcpy (como la zona grande del layout live) -->
+      <div class="combo-phone" data-phone-slot>
+        <div class="combo-phone__label">
+          Móvil · scrcpy
+          <span>Window Capture · 480×1080</span>
+        </div>
+      </div>
+
+      <!-- Derecha arriba: pantalla Mac en el hueco que era de la webcam -->
+      <div class="combo-laptop" data-laptop-slot>
+        <div class="combo-laptop__frame">
+          <div class="combo-laptop__label">
+            Pantalla Mac
+            <span>1800×1169 → 1232×800 · sin crop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debajo: webcam + chat al lado -->
+      <div class="combo-bottom">
+        <div class="cam-frame combo-cam" data-cam-frame>
+          <span class="cam-frame__corner cam-frame__corner--tl"></span>
+          <span class="cam-frame__corner cam-frame__corner--tr"></span>
+          <span class="cam-frame__corner cam-frame__corner--bl"></span>
+          <span class="cam-frame__corner cam-frame__corner--br"></span>
+          <div class="guide-note">Webcam · 720×280</div>
+        </div>
+
+        <div class="chat-slot combo-chat" data-chat-slot>
+          <div class="chat-slot__label">
+            Chat
+            <span>Browser Source · 720×280</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SceneLayout>
+
+<script>
+  import { initConfig } from "../../scripts/config";
+  import { initClock } from "../../scripts/clock";
+
+  initConfig();
+  initClock();
+</script>

@@ -44,6 +44,8 @@ import "../styles/hub.css";
         <li>En cada una: Fuentes → + → Browser → URL de la escena correspondiente.</li>
         <li>Ancho <code>1920</code>, alto <code>1080</code>, FPS 30. Activa “Refresh browser when scene becomes active”.</li>
         <li>En <strong>Directo</strong>: Mac escalada a <strong>1500×974</strong> (sin crop); rail derecho 420px para chat + webcam.</li>
+        <li>En <strong>Móvil</strong>: 3 columnas — scrcpy (500) · webcam (720) · chat (700), todas a 1080 de alto.</li>
+        <li>En <strong>Combo</strong>: scrcpy (480); Mac (1800×1169→1047×680); webcam + chat debajo (720×400 c/u).</li>
         <li>En Inicio / BRB / Cierre el fondo es opaco a pantalla completa.</li>
       </ol>
       <p class="note">
@@ -56,7 +58,9 @@ import "../styles/hub.css";
 <script>
   const scenes = [
     { id: "starting", title: "Inicio · Empezamos en breve", path: "/scenes/starting" },
-    { id: "live", title: "Directo · Overlay cámara", path: "/scenes/live", preview: true },
+    { id: "live", title: "Directo · Mac + cam", path: "/scenes/live", preview: true },
+    { id: "mobile", title: "Móvil · scrcpy + cam", path: "/scenes/mobile", preview: true },
+    { id: "combo", title: "Combo · móvil + Mac", path: "/scenes/combo", preview: true },
     { id: "brb", title: "Pausa · Vuelvo enseguida", path: "/scenes/brb" },
     { id: "ending", title: "Cierre · Gracias", path: "/scenes/ending" },
   ];

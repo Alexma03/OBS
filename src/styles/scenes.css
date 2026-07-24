@@ -418,3 +418,235 @@ body.scene-overlay:not([data-preview="1"]) .guide-note {
   left: -16px;
   color: var(--fg-dim);
 }
+
+/* ——— Escena móvil: 3 columnas (scrcpy | cam | chat) ——— */
+.mobile-chrome {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  background: var(--bg);
+}
+
+.scene-overlay--mobile .clock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  z-index: 4;
+}
+
+.mobile-col {
+  position: relative;
+  height: 100%;
+  flex: 0 0 auto;
+}
+
+.mobile-col--phone {
+  width: var(--mobile-phone-w);
+}
+
+.mobile-col--cam {
+  width: var(--mobile-cam-w);
+}
+
+.mobile-col--chat {
+  width: var(--mobile-chat-w);
+  flex: 1 1 auto;
+}
+
+.phone-slot {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 9, 11, 0.55);
+}
+
+.phone-slot__label {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 232, 0.45);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(242, 239, 232, 0.03),
+    rgba(242, 239, 232, 0.03) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.phone-slot__label span {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(242, 239, 232, 0.28);
+  text-transform: none;
+}
+
+body.scene-overlay--mobile[data-preview="1"] .phone-slot__label {
+  display: flex;
+}
+
+body.scene-overlay--mobile:not([data-preview="1"]) .phone-slot {
+  background: transparent;
+}
+
+.scene-overlay--mobile .mobile-cam {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-left: 1.5px solid rgba(242, 239, 232, 0.18);
+  border-right: 1.5px solid rgba(242, 239, 232, 0.18);
+  box-shadow: none;
+}
+
+.scene-overlay--mobile .mobile-chat {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  box-shadow: none;
+}
+
+body.scene-overlay--mobile:not([data-preview="1"]) .mobile-cam {
+  border-color: rgba(242, 239, 232, 0.18);
+}
+
+/* ——— Combinada: móvil | Mac arriba-derecha | cam+chat debajo ——— */
+.combo-chrome {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+.scene-overlay--combo .clock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  z-index: 4;
+}
+
+.combo-phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--combo-phone-w);
+  background: rgba(8, 9, 11, 0.55);
+}
+
+.combo-phone__label,
+.combo-laptop__label {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 232, 0.45);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(242, 239, 232, 0.03),
+    rgba(242, 239, 232, 0.03) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.combo-phone__label span,
+.combo-laptop__label span {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(242, 239, 232, 0.28);
+  text-transform: none;
+}
+
+body.scene-overlay--combo[data-preview="1"] .combo-phone__label,
+body.scene-overlay--combo[data-preview="1"] .combo-laptop__label {
+  display: flex;
+}
+
+body.scene-overlay--combo:not([data-preview="1"]) .combo-phone {
+  background: transparent;
+}
+
+/* Hueco que era la webcam del live → ahora pantalla Mac (aspecto 1800×1169) */
+.combo-laptop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--combo-right-w);
+  height: var(--combo-top-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.combo-laptop__frame {
+  position: relative;
+  width: var(--combo-laptop-w);
+  height: var(--combo-laptop-h);
+  border: 1.5px solid rgba(242, 239, 232, 0.18);
+  background: rgba(8, 9, 11, 0.55);
+}
+
+body.scene-overlay--combo:not([data-preview="1"]) .combo-laptop__frame {
+  background: transparent;
+}
+
+.combo-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--combo-right-w);
+  height: var(--combo-bottom-h);
+  display: flex;
+  flex-direction: row;
+}
+
+.scene-overlay--combo .combo-cam {
+  position: relative;
+  flex: 0 0 var(--combo-cam-w);
+  width: var(--combo-cam-w);
+  height: 100%;
+  border: 0;
+  border-left: 1.5px solid rgba(242, 239, 232, 0.18);
+  border-top: 1.5px solid rgba(242, 239, 232, 0.12);
+  box-shadow: none;
+}
+
+.scene-overlay--combo .combo-chat {
+  position: relative;
+  flex: 1 1 auto;
+  width: var(--combo-chat-w);
+  height: 100%;
+  border: 0;
+  border-top: 1px solid rgba(242, 239, 232, 0.12);
+  box-shadow: none;
+}
+

@@ -53,6 +53,47 @@ npm run deploy
 
 Worker: `https://obs.alex03marcos.workers.dev`
 
+## Layout Móvil (scrcpy)
+
+```
+┌──────────┬──────────────┬─────────────┐
+│  scrcpy  │    Webcam    │    Chat     │
+│ 500×1080 │   720×1080   │  700×1080   │
+└──────────┴──────────────┴─────────────┘
+              1920 × 1080
+```
+
+URL: `/scenes/mobile?preview=1`
+
+En OBS:
+1. Arranca scrcpy por ADB wireless.
+2. **Captura de ventana** → scrcpy → columna izquierda (500×1080).
+3. Webcam → columna centro (720×1080).
+4. Chat Browser Source → columna derecha (700×1080).
+5. Overlay: `…/scenes/mobile` encima.
+
+## Layout Combo (móvil + Mac)
+
+```
+┌──────────┬────────────────────────────┐
+│          │      Pantalla Mac          │
+│  scrcpy  │      1047×680              │
+│  480×1080│      (1800×1169 fit)       │
+│          ├─────────────┬──────────────┤
+│          │   Webcam    │     Chat     │
+│          │   720×400   │    720×400   │
+└──────────┴─────────────┴──────────────┘
+```
+
+URL: `/scenes/combo?preview=1`
+
+En OBS:
+1. scrcpy → columna izquierda (**480×1080**).
+2. Display Capture Mac → arriba derecha **1047×680** (sin crop, aspecto 1800×1169).
+3. Webcam → abajo (**720×400**).
+4. Chat → abajo derecha (**720×400**).
+5. Overlay combo encima.
+
 ## OBS
 
 1. Settings → Video → Base & Output: **1920 × 1080**  
