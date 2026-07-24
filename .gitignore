@@ -1,0 +1,10 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+.astro/
+
+# misc
+.DS_Store
+.cache/

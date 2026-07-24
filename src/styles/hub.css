@@ -1,0 +1,164 @@
+:root {
+  --bg: #0b0c0e;
+  --panel: #12141a;
+  --fg: #f2efe8;
+  --muted: rgba(242, 239, 232, 0.55);
+  --line: rgba(242, 239, 232, 0.12);
+  --accent: #e4572e;
+}
+
+body.hub {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(228, 87, 46, 0.18), transparent),
+    var(--bg);
+  color: var(--fg);
+  font-family: "DM Sans", system-ui, sans-serif;
+  padding: 48px 32px 80px;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.wrap h1 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.lead {
+  margin-top: 16px;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.params {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+
+.params label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.params input,
+.params select {
+  min-width: 140px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--fg);
+  font: inherit;
+  border-radius: 0;
+}
+
+.params button {
+  padding: 11px 18px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.grid {
+  margin-top: 48px;
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.card__head h2 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card__head a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.preview iframe {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.howto {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.howto h2 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.howto ol {
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.howto code {
+  color: var(--fg);
+  background: rgba(242, 239, 232, 0.06);
+  padding: 1px 6px;
+  font-size: 0.92em;
+}
+
+.note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}

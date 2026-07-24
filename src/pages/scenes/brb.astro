@@ -1,0 +1,34 @@
+---
+import SceneLayout from "../../layouts/SceneLayout.astro";
+import Atmosphere from "../../components/Atmosphere.astro";
+import Ring from "../../components/Ring.astro";
+import "../../styles/base.css";
+import "../../styles/scenes.css";
+---
+
+<SceneLayout title="OBS · Vuelvo enseguida">
+  <div class="scene">
+    <Atmosphere />
+    <Ring />
+
+    <div class="scene__content">
+      <p class="eyebrow">Pausa breve</p>
+      <h1 class="title">Vuelvo enseguida</h1>
+      <p class="subtitle">
+        No te vayas — en un momento seguimos exactamente donde lo dejamos.
+      </p>
+      <div class="countdown">
+        <span class="countdown__label">aprox.</span>
+        <span class="countdown__time" data-countdown>3:00</span>
+      </div>
+    </div>
+  </div>
+</SceneLayout>
+
+<script>
+  import { initConfig } from "../../scripts/config";
+  import { initCountdown } from "../../scripts/countdown";
+
+  initConfig({ defaultDuration: 180 });
+  initCountdown();
+</script>

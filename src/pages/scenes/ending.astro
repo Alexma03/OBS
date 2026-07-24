@@ -1,0 +1,30 @@
+---
+import SceneLayout from "../../layouts/SceneLayout.astro";
+import Atmosphere from "../../components/Atmosphere.astro";
+import Ring from "../../components/Ring.astro";
+import "../../styles/base.css";
+import "../../styles/scenes.css";
+---
+
+<SceneLayout title="OBS · Hasta pronto">
+  <div class="scene">
+    <Atmosphere />
+    <Ring />
+
+    <div class="scene__content">
+      <p class="eyebrow eyebrow--hero">Fin del directo<br />Gracias por acompañarme</p>
+      <p class="subtitle">
+        Ha sido un placer. Nos vemos en el próximo directo.
+      </p>
+      <div class="social-row">
+        <span data-bind="handle">alexma0305</span>
+      </div>
+    </div>
+  </div>
+</SceneLayout>
+
+<script>
+  import { initConfig } from "../../scripts/config";
+
+  initConfig();
+</script>

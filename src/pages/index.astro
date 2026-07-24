@@ -1,0 +1,111 @@
+---
+import HubLayout from "../layouts/HubLayout.astro";
+import "../styles/hub.css";
+---
+
+<HubLayout>
+  <div class="wrap">
+    <h1>Escenas OBS</h1>
+    <p class="lead">
+      Pack minimalista para Browser Source: inicio, directo con marco de cámara,
+      pausa y cierre.       Canvas <strong>1920×1080</strong> (Full HD). Mac 1800×1169 encajada a la izquierda + rail webcam.
+    </p>
+
+    <div class="params">
+      <label>
+        Nombre
+        <input id="name" type="text" value="Alex" />
+      </label>
+      <label>
+        Handle
+        <input id="handle" type="text" value="alexma0305" />
+      </label>
+      <label>
+        Countdown (s)
+        <input id="duration" type="number" value="300" min="10" step="30" />
+      </label>
+      <label>
+        Cámara
+        <select id="cam">
+          <option value="right" selected>Rail derecho</option>
+          <option value="left">Rail izquierdo</option>
+        </select>
+      </label>
+      <button type="button" id="apply">Actualizar previews</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <section class="howto">
+      <h2>Cómo usarlo en OBS</h2>
+      <ol>
+        <li>Arranca Astro con <code>npm run dev</code> (o <code>npm run build && npm run preview</code>).</li>
+        <li>En OBS crea 4 escenas: <strong>Inicio</strong>, <strong>Directo</strong>, <strong>BRB</strong>, <strong>Cierre</strong>.</li>
+        <li>En cada una: Fuentes → + → Browser → URL de la escena correspondiente.</li>
+        <li>Ancho <code>1920</code>, alto <code>1080</code>, FPS 30. Activa “Refresh browser when scene becomes active”.</li>
+        <li>En <strong>Directo</strong>: Mac escalada a <strong>1500×974</strong> (sin crop); rail derecho 420px para chat + webcam.</li>
+        <li>En Inicio / BRB / Cierre el fondo es opaco a pantalla completa.</li>
+      </ol>
+      <p class="note">
+        Tip: añade <code>&amp;preview=1</code> en <code>/scenes/live</code> para ver las guías de cámara y chat.
+      </p>
+    </section>
+  </div>
+</HubLayout>
+
+<script>
+  const scenes = [
+    { id: "starting", title: "Inicio · Empezamos en breve", path: "/scenes/starting" },
+    { id: "live", title: "Directo · Overlay cámara", path: "/scenes/live", preview: true },
+    { id: "brb", title: "Pausa · Vuelvo enseguida", path: "/scenes/brb" },
+    { id: "ending", title: "Cierre · Gracias", path: "/scenes/ending" },
+  ];
+
+  const grid = document.getElementById("grid");
+
+  function qs() {
+    const p = new URLSearchParams({
+      name: (document.getElementById("name") as HTMLInputElement).value.trim() || "Alex",
+      handle: (document.getElementById("handle") as HTMLInputElement).value.trim() || "alexma0305",
+      duration: (document.getElementById("duration") as HTMLInputElement).value || "300",
+      cam: (document.getElementById("cam") as HTMLSelectElement).value,
+    });
+    return p.toString();
+  }
+
+  function scaleFrames() {
+    document.querySelectorAll(".preview").forEach((box) => {
+      const iframe = box.querySelector("iframe");
+      if (!iframe) return;
+      const scale = (box as HTMLElement).clientWidth / 1920;
+      iframe.style.transform = `scale(${scale})`;
+    });
+  }
+
+  function render() {
+    if (!grid) return;
+    const query = qs();
+    grid.innerHTML = scenes
+      .map((s) => {
+        const extra = s.preview ? "&preview=1" : "";
+        const url = `${s.path}?${query}${extra}`;
+        return `
+          <article class="card">
+            <div class="card__head">
+              <h2>${s.title}</h2>
+              <a href="${url}" target="_blank" rel="noopener">Abrir</a>
+            </div>
+            <div class="preview">
+              <iframe src="${url}" title="${s.title}" loading="lazy"></iframe>
+            </div>
+          </article>
+        `;
+      })
+      .join("");
+    requestAnimationFrame(scaleFrames);
+  }
+
+  document.getElementById("apply")?.addEventListener("click", render);
+  window.addEventListener("resize", scaleFrames);
+  render();
+</script>

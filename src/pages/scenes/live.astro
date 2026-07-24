@@ -1,0 +1,49 @@
+---
+import SceneLayout from "../../layouts/SceneLayout.astro";
+import "../../styles/base.css";
+import "../../styles/scenes.css";
+---
+
+<SceneLayout title="OBS · En directo" bodyClass="scene-overlay scene-overlay--dark">
+  <div class="scene">
+    <div class="live-chrome">
+      <div class="mac-column" aria-hidden="true"></div>
+
+      <div class="clock" aria-live="polite">
+        <span class="clock__time" data-clock>00:00:00</span>
+      </div>
+
+      <div class="screen-guide" aria-hidden="true">
+        <div class="screen-guide__label">
+          Pantalla Mac
+          <span>1800×1169 → encaje 1500×974 · sin crop</span>
+        </div>
+      </div>
+
+      <div class="cam-stack cam-stack--right" data-cam-stack>
+        <div class="chat-slot" data-chat-slot>
+          <div class="chat-slot__label">
+            Chat
+            <span>Browser Source · 420×restante</span>
+          </div>
+        </div>
+
+        <div class="cam-frame" data-cam-frame>
+          <span class="cam-frame__corner cam-frame__corner--tl"></span>
+          <span class="cam-frame__corner cam-frame__corner--tr"></span>
+          <span class="cam-frame__corner cam-frame__corner--bl"></span>
+          <span class="cam-frame__corner cam-frame__corner--br"></span>
+          <div class="guide-note">Webcam · 420×315</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SceneLayout>
+
+<script>
+  import { initConfig } from "../../scripts/config";
+  import { initClock } from "../../scripts/clock";
+
+  initConfig();
+  initClock();
+</script>
